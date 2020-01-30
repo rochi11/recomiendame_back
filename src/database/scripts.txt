@@ -65,3 +65,9 @@ CREATE TABLE IF NOT EXISTS compras(
     idRecomendacion INTEGER REFERENCES recomendaciones(idRecomendacion),
     idUsuario INTEGER REFERENCES usuarios(idusuario)
 );
+
+CREATE TABLE IF NOT EXISTS prod_rec(
+    idProdRec INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    idProducto INTEGER REFERENCES productos(idProducto),
+    idRecomendacion INTEGER REFERENCES recomendaciones(idRecomendacion)
+);

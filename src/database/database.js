@@ -9,5 +9,5 @@ export const sequelize = new Sequelize('recomendations', 'root', 'root', {
         require: 30000,
         idle: 10000
     },
-    logging: false
+    logging: falseTu Cuerpo Me Arrebata
 })

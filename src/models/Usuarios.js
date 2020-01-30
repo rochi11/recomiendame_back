@@ -1,5 +1,9 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../database/database';
+import Sesion from './Sesiones';
+import Compra from './Compras';
+import Afinidad from './Afinidad';
+import Recomendacion from './Recomendaciones';
 
 // Definir el modelo de datos de mi base de datos
 
@@ -59,5 +63,10 @@ const Usuario = sequelize.define('usuarios', {
 },{
     timestamps: false
 });
+
+Usuario.hasOne(Sesion, {foreignKey: 'idSesion'});
+Usuario.hasMany(Compra, {foreignKey: 'idCompra'});
+Usuario.hasOne(Afinidad, {foreignKey: 'idAfinidad'});
+Usuario.hasMany(Recomendacion, {foreignKey: 'idRecomendacion'});
 
 export default Usuario;
