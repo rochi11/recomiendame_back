@@ -42,6 +42,7 @@ const Producto = sequelize.define('productos', {
 });
 
 Producto.hasOne(Categoria, {foreignKey: 'idCategoria'});
-Producto.hasMany(Recomendacion, {foreignKey: 'idRecomendacion'});
+
+Producto.hasMany(ProductoRecomendacion, {foreignKey: 'idProdRec'});
 
 export default Producto;

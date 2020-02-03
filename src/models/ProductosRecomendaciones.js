@@ -1,29 +1,27 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../database/database';
 import Usuario from './Usuarios';
+import Producto from './Productos';
 
 // Definir el modelo de datos de mi base de datos
 
-const Recomendacion = sequelize.define('recomendaciones', {
-    idRecomendacion: {
+const ProductoRecomendacion = sequelize.define('producto_recomendacion', {
+    idProdRec: {
         type: Sequelize.INTEGER,
         primaryKey: true
     },
-    barcode: {
-        type: Sequelize.VARCHAR
-    },
-    idProductoRecomendado: {
+    idProducto: {
         type: Sequelize.INTEGER
     },
-    idUsuario: {
+    idRecomendacion: {
         type: Sequelize.INTEGER
     }
 }, {
     timestamps: false
 });
 
-Recomendacion.hasOne(Usuario, {foreignKey: 'idUsuario'});
+ProductoRecomendacion.hasOne(Usuario, {foreignKey: 'idUsuario'});
 
-Recomendacion.hasMany(ProductoRecomendacion, {foreignKey: 'idProdRec'});
+ProductoRecomendacion.hasOne(Producto, {foreignKey: 'idProducto'});
 
-export default Recomendacion;
+export default ProductoRecomendacion;

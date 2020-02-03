@@ -1,25 +1,25 @@
-// use recomendations;
+// use recomiendame_api
 CREATE TABLE IF NOT EXISTS sesiones(
     idSesion INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    ip TEXT NOT NULL CHECK(token < > ''),
+    ip TEXT NOT NULL CHECK(token <> ''),
     fechaCreacion DATE NOT NULL,
     idUsuario INTEGER REFERENCES users(idUsers)
 );
 
 CREATE TABLE IF NOT EXISTS usuarios(
     idUsuario INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    rol VARCHAR(15) NOT NULL CHECK(rol < > ''),
-    usuario VARCHAR(15) NOT NULL CHECK(usuario < > ''),
-    clave VARCHAR(50) NOT NULL CHECK(clave < > ''),
-    avatar TEXT CHECK(avatar < > ''),
-    nombre VARCHAR(50) NOT NULL CHECK(nombre < > ''),
-    apellido VARCHAR(50) NOT NULL CHECK(apellido < > ''),
+    rol VARCHAR(15) NOT NULL CHECK(rol <> ''),
+    usuario VARCHAR(15) NOT NULL CHECK(usuario <> ''),
+    clave VARCHAR(50) NOT NULL CHECK(clave <> ''),
+    avatar TEXT CHECK(avatar <> ''),
+    nombre VARCHAR(50) NOT NULL CHECK(nombre <> ''),
+    apellido VARCHAR(50) NOT NULL CHECK(apellido <> ''),
     sexo BOOLEAN DEFAULT TRUE,
     edad INTEGER NOT NULL,
-    direccion VARCHAR(100) NOT NULL CHECK(direccion < > ''),
-    email VARCHAR(30) NOT NULL CHECK(email < > ''),
-    telefono varchar(10) NOT NULL CHECK(telefono < > ''),
-    token TEXT NOT NULL CHECK(token < > ''),
+    direccion VARCHAR(100) NOT NULL CHECK(direccion <> ''),
+    email VARCHAR(30) NOT NULL CHECK(email <> ''),
+    telefono varchar(10) NOT NULL CHECK(telefono <> ''),
+    token TEXT NOT NULL CHECK(token <> ''),
     activo INTEGER NOT NULL DEFAULT 1,
     eliminado INTEGER NOT NULL DEFAULT 1,
     fechaCreacion DATE NOT NULL,
@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS afinidad(
 
 CREATE TABLE IF NOT EXISTS productos(
     idProducto INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nombre VARCHAR(30) NOT NULL CHECK(nombre < > ''),
+    nombre VARCHAR(30) NOT NULL CHECK(nombre <> ''),
     precio DECIMAL NOT NULL,
-    descripcion VARCHAR(50) NOT NULL CHECK(descripcion < > ''),
-    barcode VARCHAR(20) NOT NULL CHECK(barcode < > ''),
-    marca VARCHAR(30) NOT NULL CHECK(marca < > ''),
-    imagen TEXT CHECK(imagen < > ''),
+    descripcion VARCHAR(50) NOT NULL CHECK(descripcion <> ''),
+    barcode VARCHAR(20) NOT NULL CHECK(barcode <> ''),
+    marca VARCHAR(30) NOT NULL CHECK(marca <> ''),
+    imagen TEXT CHECK(imagen <> ''),
     cantidad INTEGER NOT NULL DEFAULT 1,
     cantidadMinima INTEGER NOT NULL DEFAULT 1,
     idCategoria INTEGER REFERENCES categorias(idCategoria)
@@ -49,12 +49,12 @@ CREATE TABLE IF NOT EXISTS productos(
 
 CREATE TABLE IF NOT EXISTS categorias(
     idCategoria INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    descripcion VARCHAR(50) NOT NULL CHECK(descripcion < > '')
+    descripcion VARCHAR(50) NOT NULL CHECK(descripcion <> '')
 );
 
 CREATE TABLE IF NOT EXISTS recomendaciones(
     idRecomendacion INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    barcode VARCHAR(20) NOT NULL CHECK(barcode < > ''),
+    barcode VARCHAR(20) NOT NULL CHECK(barcode <> ''),
     idProductoRecomendado INTEGER REFERENCES productos(idProducto),
     idUsuario INTEGER REFERENCES usuarios(idusuario)
 );
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS compras(
     idUsuario INTEGER REFERENCES usuarios(idusuario)
 );
 
-CREATE TABLE IF NOT EXISTS producto_recomendacion(
+CREATE TABLE IF NOT EXISTS productos_recomendaciones(
     idProdRec INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     idProducto INTEGER REFERENCES productos(idProducto),
     idRecomendacion INTEGER REFERENCES recomendaciones(idRecomendacion)
